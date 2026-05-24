@@ -447,7 +447,7 @@ span.badge {
 /* Grid of Diagnostic Panels */
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 1.25fr 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr 1fr 1.1fr;
   gap: 1.5rem;
 }
 
@@ -747,7 +747,7 @@ span.badge {
 
 .launcher-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 

@@ -26,7 +26,7 @@
         <img src="logo.jpg" alt="O₂ SleepWell Laboratory Logo" class="company-logo">
         <div class="brand-text">
           <span class="brand-title">O₂ SleepWell</span>
-          <span class="brand-tag">Clinical Hub</span>
+          <span class="brand-tag" id="brand-tag">Clinical Hub</span>
         </div>
       </a>
       
@@ -38,6 +38,9 @@
           <span style="color: var(--text-muted); margin: 0 0.25rem;">•</span>
           <span id="headerPhaseState" style="color: var(--brand-primary);">Melatonin Arousal</span>
         </div>
+        
+        <!-- Language Selector Toggle -->
+        <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Toggle language">中文</button>
         
         <!-- Dark/Light Theme Toggle -->
         <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle light/dark theme">
@@ -60,21 +63,21 @@
     <!-- HERO TITLE AREA -->
     <section class="hero-hub-section">
       <div class="hero-intro">
-        <span class="badge">
+        <span class="badge" id="hero-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
             <path d="M12 6v6l4 2"/>
           </svg>
           Sleep & Performance Integration
         </span>
-        <h1>Synchronize Your <span>Circadian Health</span></h1>
-        <p>Welcome to your clinical gateway. This dashboard aggregates findings from your self-assessments and cognitive performance audits to map your alertness and biological sync in real-time.</p>
+        <h1 id="hero-title">Synchronize Your <span>Circadian Health</span></h1>
+        <p id="hero-desc">Welcome to your clinical gateway. This dashboard aggregates findings from your self-assessments and cognitive performance audits to map your alertness and biological sync in real-time.</p>
       </div>
 
       <!-- DYNAMIC AGGREGATED CLINICAL DASHBOARD -->
       <div class="glass-panel dashboard-glass-wrapper">
         <div class="dashboard-title-bar">
-          <h2 class="dashboard-title">
+          <h2 class="dashboard-title" id="dashboard-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
               <line x1="9" y1="3" x2="9" y2="21"/>
@@ -127,7 +130,29 @@
             </div>
           </div>
 
-          <!-- Panel C: Combined Diagnostics Status -->
+          <!-- Panel C: Cognitive Flexibility Status -->
+          <div class="dash-panel" id="flexibilityPanel">
+            <div class="panel-header">
+              <span class="panel-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="9" y1="3" x2="9" y2="21"/>
+                  <line x1="15" y1="3" x2="15" y2="21"/>
+                  <line x1="3" y1="9" x2="21" y2="9"/>
+                  <line x1="3" y1="15" x2="21" y2="15"/>
+                </svg>
+                Cognitive Flexibility
+              </span>
+              <span class="badge" style="font-size: 0.6rem; padding: 0.2rem 0.5rem;" id="tmtTimeLabel">TMT</span>
+            </div>
+            
+            <!-- Dynamic Content or Empty State -->
+            <div id="flexibilityPanelContent" style="display: flex; flex-direction: column; height: 100%;">
+              <!-- Rendered dynamically in script.js -->
+            </div>
+          </div>
+
+          <!-- Panel D: Combined Diagnostics Status -->
           <div class="dash-panel" id="diagnosticsPanel">
             <div class="panel-header">
               <span class="panel-title">
@@ -152,8 +177,8 @@
     <!-- ACTIVE APPLICATIONS SUITE LAUNCHER -->
     <section class="suite-section" id="activeApps">
       <div class="section-header">
-        <h2>Laboratory Diagnostic Applications</h2>
-        <p>Launch your clinical assessment interfaces below. Data is securely collected in your browser storage.</p>
+        <h2 id="launcher-title">Laboratory Diagnostic Applications</h2>
+        <p id="launcher-desc">Launch your clinical assessment interfaces below. Data is securely collected in your browser storage.</p>
       </div>
 
       <div class="launcher-grid">
@@ -231,14 +256,55 @@
           </a>
         </div>
 
+        <!-- Application 3: Brain Fog & Task Switching (TMT) -->
+        <div class="glass-panel launcher-card tmt-card" id="tmtCard">
+          <div class="card-top">
+            <div class="card-info">
+              <span class="badge" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.25); color: var(--success);">Cognitive Executive</span>
+              <h3>Cognitive Flexibility (TMT-A/B)</h3>
+            </div>
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="9" y1="3" x2="9" y2="21"/>
+              <line x1="15" y1="3" x2="15" y2="21"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="3" y1="15" x2="21" y2="15"/>
+            </svg>
+          </div>
+          <p class="card-desc">The clinical gold standard for auditing Obstructive Sleep Apnea (OSA) related brain fog, task-alternation latency, and set-shifting executive flexibility. Assesses your ability to alternate visual channels under pressure.</p>
+          
+          <div class="card-specs">
+            <div class="spec-item">
+              <span class="spec-label">Methodology</span>
+              <span class="spec-val">Reitan TMT Norms (1958)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Parameters</span>
+              <span class="spec-val">Alternation & Error Rates</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Time Audit</span>
+              <span class="spec-val">&lt; 3 Minutes</span>
+            </div>
+          </div>
+          
+          <a href="../tmt-app/index.html" class="btn btn-primary" id="launchTmtBtn">
+            Initialize Test
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
       </div>
     </section>
 
     <!-- FUTURE APPLICATION ROADMAP PIPELINE -->
     <section class="roadmap-section">
       <div class="section-header">
-        <h2>Future Diagnostics Roadmap</h2>
-        <p>Preview sleep-tracking utilities currently under clinical and technical engineering.</p>
+        <h2 id="roadmap-title">Future Diagnostics Roadmap</h2>
+        <p id="roadmap-desc">Preview sleep-tracking utilities currently under clinical and technical engineering.</p>
       </div>
 
       <div class="roadmap-grid">
@@ -246,21 +312,21 @@
         <!-- Future App 1: SomnoDiary -->
         <div class="glass-panel roadmap-card">
           <div class="roadmap-header">
-            <span class="badge roadmap-badge beta">Clinical Beta</span>
-            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Beta Launch Q3</span>
+            <span class="badge roadmap-badge beta" id="roadmap-app1-badge">Clinical Beta</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;" id="roadmap-app1-date">Beta Launch Q3</span>
           </div>
-          <h3 class="roadmap-title" style="margin-bottom: 0.5rem;">SomnoDiary & Sleep Debt Auditor</h3>
-          <p style="font-size: 0.85rem;">Interactive sleep diary and sleep latency logger. Aggregates sleep schedules over 14 days to compute accumulative sleep debt percentage and dynamically warn of chronic performance erosion.</p>
+          <h3 class="roadmap-title" style="margin-bottom: 0.5rem;" id="roadmap-app1-title">SomnoDiary & Sleep Debt Auditor</h3>
+          <p style="font-size: 0.85rem;" id="roadmap-app1-desc">Interactive sleep diary and sleep latency logger. Aggregates sleep schedules over 14 days to compute accumulative sleep debt percentage and dynamically warn of chronic performance erosion.</p>
         </div>
 
         <!-- Future App 2: LuxTherapy -->
         <div class="glass-panel roadmap-card">
           <div class="roadmap-header">
-            <span class="badge roadmap-badge">Research Lab</span>
-            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Beta Launch Q4</span>
+            <span class="badge roadmap-badge" id="roadmap-app2-badge">Research Lab</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;" id="roadmap-app2-date">Beta Launch Q4</span>
           </div>
-          <h3 class="roadmap-title" style="margin-bottom: 0.5rem;">LuxTherapy Circadian Light Simulator</h3>
-          <p style="font-size: 0.85rem;">Calculates optimal light intensity, lux thresholds, and spectrum timings (e.g. blue-light exposure vs orange sunsets) based on your chronotype to accelerate phase shifts and travel adaptation.</p>
+          <h3 class="roadmap-title" style="margin-bottom: 0.5rem;" id="roadmap-app2-title">LuxTherapy Circadian Light Simulator</h3>
+          <p style="font-size: 0.85rem;" id="roadmap-app2-desc">Calculates optimal light intensity, lux thresholds, and spectrum timings (e.g. blue-light exposure vs orange sunsets) based on your chronotype to accelerate phase shifts and travel adaptation.</p>
         </div>
 
       </div>
@@ -270,10 +336,10 @@
     <section class="science-section">
       <div class="science-grid">
         <div class="science-content">
-          <h2>The Interaction of Circadian Phase & Vigilance</h2>
-          <p>Sleep pressure and cognitive vigilance are regulated by a highly complex two-process model of sleep regulation: <strong>Process C (Circadian rhythm)</strong> and <strong>Process S (Homeostatic sleep drive)</strong>.</p>
-          <p><strong>Process C</strong> is an oscillatory alert drive driven by the brain's suprachiasmatic nucleus (SCN) that dictates when we are biologically primed to wake and sleep. <strong>Process S</strong> is the accumulation of somnogen (adenosine) in the synapses that grows lineally with every hour of wakefulness.</p>
-          <p>Living out of sync with Process C leads to <em>social jetlag</em>. Combining rMEQ chronotyping and PVT-B millisecond speed audits gives clinicians a high-resolution view of your current neurological readiness, indicating when you are at peak flow state and when you are highly susceptible to critical lapses of attention.</p>
+          <h2 id="science-title">The Interaction of Circadian Phase & Vigilance</h2>
+          <p id="science-p1">Sleep pressure and cognitive vigilance are regulated by a highly complex two-process model of sleep regulation: <strong>Process C (Circadian rhythm)</strong> and <strong>Process S (Homeostatic sleep drive)</strong>.</p>
+          <p id="science-p2"><strong>Process C</strong> is an oscillatory alert drive driven by the brain's suprachiasmatic nucleus (SCN) that dictates when we are biologically primed to wake and sleep. <strong>Process S</strong> is the accumulation of somnogen (adenosine) in the synapses that grows lineally with every hour of wakefulness.</p>
+          <p id="science-p3">Living out of sync with Process C leads to <em>social jetlag</em>. Combining rMEQ chronotyping and PVT-B millisecond speed audits gives clinicians a high-resolution view of your current neurological readiness, indicating when you are at peak flow state and when you are highly susceptible to critical lapses of attention.</p>
         </div>
         
         <div class="science-infographic">
