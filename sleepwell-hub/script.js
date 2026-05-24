@@ -136,6 +136,11 @@ const I18N_DICTS = {
     launchTmtDesc: "The clinical gold standard for auditing Obstructive Sleep Apnea (OSA) related brain fog, task-alternation latency, and set-shifting executive flexibility. Assesses your ability to alternate visual channels under pressure.",
     launchTmtBtn: "Initialize Test",
     
+    launchHsatBadge: "Clinical Screening",
+    launchHsatTitle: "Home Sleep Apnea Test (HSAT) Screening",
+    launchHsatDesc: "Assess patient eligibility for a Home Sleep Apnea Test (HSAT). Dynamically calculates obstructive sleep apnea (OSA) risk indices using Epworth Sleepiness and STOP-Bang metrics.",
+    launchHsatBtn: "Launch Assessment",
+    
     // Specs columns labels
     specLabelMethodology: "Methodology",
     specLabelParameters: "Parameters",
@@ -235,6 +240,11 @@ const I18N_DICTS = {
     launchTmtTitle: "脑雾与执行切换测评 (TMT-A/B)",
     launchTmtDesc: "评估阻塞性睡眠呼吸暂停 (OSA) 相关的脑雾滞后、认知通路转换迟钝和前额叶执行灵活性的临床金标准。测试您在压力下交替寻找视觉目标的能力。",
     launchTmtBtn: "启动多任务测评",
+    
+    launchHsatBadge: "临床评估筛查",
+    launchHsatTitle: "居家睡眠呼吸暂停监测评估筛查 (HSAT)",
+    launchHsatDesc: "评估患者是否符合进行居家睡眠监测 (HSAT) 的指征。通过爱普沃斯嗜睡量表 (ESS) 及 STOP-Bang 物理特征指标，动态计算中重度阻塞性睡眠呼吸暂停 (OSA) 概率。",
+    launchHsatBtn: "启动筛查评估",
     
     // Specs columns labels
     specLabelMethodology: "科学文献常模",
@@ -436,6 +446,23 @@ function setLanguage(lang) {
       specs[0].querySelector('.spec-val').textContent = "Reitan TMT Norms (1958)";
       specs[1].querySelector('.spec-label').textContent = d.specLabelParameters;
       specs[1].querySelector('.spec-val').textContent = lang === 'en' ? "Alternation & Error Rates" : "通路切换与点击错误率";
+      specs[2].querySelector('.spec-label').textContent = d.specLabelTimeAudit;
+      specs[2].querySelector('.spec-val').textContent = lang === 'en' ? "< 3 Minutes" : "小于 3 分钟";
+    }
+  }
+  
+  const hsatCard = document.getElementById('hsatCard');
+  if (hsatCard) {
+    hsatCard.querySelector('.card-info .badge').textContent = d.launchHsatBadge;
+    hsatCard.querySelector('.card-info h3').textContent = d.launchHsatTitle;
+    hsatCard.querySelector('.card-desc').textContent = d.launchHsatDesc;
+    hsatCard.querySelector('#launchHsatBtn').querySelector('#launchHsatText').textContent = d.launchHsatBtn;
+    const specs = hsatCard.querySelectorAll('.card-specs .spec-item');
+    if (specs.length >= 3) {
+      specs[0].querySelector('.spec-label').textContent = d.specLabelMethodology;
+      specs[0].querySelector('.spec-val').textContent = "STOP-Bang & ESS Guidelines";
+      specs[1].querySelector('.spec-label').textContent = d.specLabelParameters;
+      specs[1].querySelector('.spec-val').textContent = lang === 'en' ? "Risk Indexes & Comorbidities" : "风险指数与合并症筛查";
       specs[2].querySelector('.spec-label').textContent = d.specLabelTimeAudit;
       specs[2].querySelector('.spec-val').textContent = lang === 'en' ? "< 3 Minutes" : "小于 3 分钟";
     }
