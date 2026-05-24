@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to the O₂ SleepWell Laboratory Clinical Hub. Launch sleep and cognitive vigilance tools, assess circadian chronotype alignment, and audit attentional fatigue.">
+  <meta name="keywords" content="rMEQ, PVT-B, Sleep Science, Chronotype, Attention Vigilance, Sleep Medicine, Fatigue Audit, Cognitive Performance, Circadian Rhythm">
+  <meta name="author" content="O₂ SleepWell Laboratory">
+  
+  <title>O₂ SleepWell Laboratory | Clinical Application Hub</title>
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="hubBody">
+
+  <!-- CLINICAL NAVIGATION HEADER -->
+  <header class="app-header">
+    <div class="container header-container">
+      <a href="#" class="logo-wrapper" id="homeLogoLink">
+        <img src="logo.jpg" alt="O₂ SleepWell Laboratory Logo" class="company-logo">
+        <div class="brand-text">
+          <span class="brand-title">O₂ SleepWell</span>
+          <span class="brand-tag">Clinical Hub</span>
+        </div>
+      </a>
+      
+      <div class="header-actions">
+        <!-- Dynamic Circadian Status Clock -->
+        <div class="clock-widget" id="clockWidget">
+          <div class="clock-dot"></div>
+          <span id="headerLiveTime">09:00 PM</span>
+          <span style="color: var(--text-muted); margin: 0 0.25rem;">•</span>
+          <span id="headerPhaseState" style="color: var(--brand-primary);">Melatonin Arousal</span>
+        </div>
+        
+        <!-- Dark/Light Theme Toggle -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle light/dark theme">
+          <!-- Sun Icon (hidden by default in dark theme) -->
+          <svg class="sun-icon hidden" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5" />
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round" />
+          </svg>
+          <!-- Moon Icon -->
+          <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- HERO TITLE AREA -->
+    <section class="hero-hub-section">
+      <div class="hero-intro">
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          Sleep & Performance Integration
+        </span>
+        <h1>Synchronize Your <span>Circadian Health</span></h1>
+        <p>Welcome to your clinical gateway. This dashboard aggregates findings from your self-assessments and cognitive performance audits to map your alertness and biological sync in real-time.</p>
+      </div>
+
+      <!-- DYNAMIC AGGREGATED CLINICAL DASHBOARD -->
+      <div class="glass-panel dashboard-glass-wrapper">
+        <div class="dashboard-title-bar">
+          <h2 class="dashboard-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <line x1="9" y1="3" x2="9" y2="21"/>
+              <line x1="15" y1="3" x2="15" y2="21"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <line x1="3" y1="15" x2="21" y2="15"/>
+            </svg>
+            Aggregated Patient Analytics
+          </h2>
+          <span class="badge" id="dashboardActiveBadge" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.25); color: var(--success);">
+            Data Synced
+          </span>
+        </div>
+
+        <div class="dashboard-grid">
+          
+          <!-- Panel A: Circadian Profile Status -->
+          <div class="dash-panel" id="circadianPanel">
+            <div class="panel-header">
+              <span class="panel-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
+                Circadian Profile
+              </span>
+              <span class="badge" style="font-size: 0.6rem; padding: 0.2rem 0.5rem;" id="rMeqTimeLabel">rMEQ</span>
+            </div>
+            
+            <!-- Dynamic Content or Empty State -->
+            <div id="circadianPanelContent" style="display: flex; flex-direction: column; height: 100%;">
+              <!-- Rendered dynamically in script.js -->
+            </div>
+          </div>
+
+          <!-- Panel B: Attentional Vigilance Status -->
+          <div class="dash-panel" id="vigilancePanel">
+            <div class="panel-header">
+              <span class="panel-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+                Attentional Vigilance
+              </span>
+              <span class="badge" style="font-size: 0.6rem; padding: 0.2rem 0.5rem;" id="pvtTimeLabel">PVT-B</span>
+            </div>
+            
+            <!-- Dynamic Content or Empty State -->
+            <div id="vigilancePanelContent" style="display: flex; flex-direction: column; height: 100%;">
+              <!-- Rendered dynamically in script.js -->
+            </div>
+          </div>
+
+          <!-- Panel C: Combined Diagnostics Status -->
+          <div class="dash-panel" id="diagnosticsPanel">
+            <div class="panel-header">
+              <span class="panel-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                Clinical Alignment
+              </span>
+              <span class="badge" style="font-size: 0.6rem; padding: 0.2rem 0.5rem; background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); color: var(--brand-secondary);">Sync Index</span>
+            </div>
+            
+            <!-- Dynamic Content or Empty State -->
+            <div id="diagnosticsPanelContent" style="display: flex; flex-direction: column; height: 100%;">
+              <!-- Rendered dynamically in script.js -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTIVE APPLICATIONS SUITE LAUNCHER -->
+    <section class="suite-section" id="activeApps">
+      <div class="section-header">
+        <h2>Laboratory Diagnostic Applications</h2>
+        <p>Launch your clinical assessment interfaces below. Data is securely collected in your browser storage.</p>
+      </div>
+
+      <div class="launcher-grid">
+        
+        <!-- Application 1: Circadian Quiz (rMEQ) -->
+        <div class="glass-panel launcher-card rmeq-card" id="rmeqCard">
+          <div class="card-top">
+            <div class="card-info">
+              <span class="badge">Circadian Rhythm</span>
+              <h3>Morningness-Eveningness (rMEQ)</h3>
+            </div>
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+            </svg>
+          </div>
+          <p class="card-desc">Identify your biological chronotype (Morning Lark, Evening Owl, or Intermediate Bear). Learn your ideal melatonin phases, core temperature cycles, and peak performance windows to eliminate social jetlag.</p>
+          
+          <div class="card-specs">
+            <div class="spec-item">
+              <span class="spec-label">Methodology</span>
+              <span class="spec-val">Adan & Almirall (1991)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Parameters</span>
+              <span class="spec-val">5 Diagnostic Items</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Time Audit</span>
+              <span class="spec-val">&lt; 2 Minutes</span>
+            </div>
+          </div>
+          
+          <a href="../meq-app/index.html" class="btn btn-primary" id="launchRmeqBtn">
+            Launch Assessment
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Application 2: Vigilance Test (PVT-B) -->
+        <div class="glass-panel launcher-card pvt-card" id="pvtCard">
+          <div class="card-top">
+            <div class="card-info">
+              <span class="badge" style="background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.25); color: var(--brand-secondary);">Neuro-Alertness</span>
+              <h3>Psychomotor Vigilance Task (PVT-B)</h3>
+            </div>
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <p class="card-desc">The aerospace and clinical gold standard for auditing cognitive fatigue and sustained attention stability. Measures response latency spikes and counts micro-sleep lapses due to sleep debt.</p>
+          
+          <div class="card-specs">
+            <div class="spec-item">
+              <span class="spec-label">Methodology</span>
+              <span class="spec-val">Basner & Dinges (2011)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Parameters</span>
+              <span class="spec-val">Reaction ms & Lapses</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Time Audit</span>
+              <span class="spec-val">1 - 3 Min Sessions</span>
+            </div>
+          </div>
+          
+          <a href="../pvt-app/index.html" class="btn btn-primary" id="launchPvtBtn">
+            Initialize Test
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FUTURE APPLICATION ROADMAP PIPELINE -->
+    <section class="roadmap-section">
+      <div class="section-header">
+        <h2>Future Diagnostics Roadmap</h2>
+        <p>Preview sleep-tracking utilities currently under clinical and technical engineering.</p>
+      </div>
+
+      <div class="roadmap-grid">
+        
+        <!-- Future App 1: SomnoDiary -->
+        <div class="glass-panel roadmap-card">
+          <div class="roadmap-header">
+            <span class="badge roadmap-badge beta">Clinical Beta</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Beta Launch Q3</span>
+          </div>
+          <h3 class="roadmap-title" style="margin-bottom: 0.5rem;">SomnoDiary & Sleep Debt Auditor</h3>
+          <p style="font-size: 0.85rem;">Interactive sleep diary and sleep latency logger. Aggregates sleep schedules over 14 days to compute accumulative sleep debt percentage and dynamically warn of chronic performance erosion.</p>
+        </div>
+
+        <!-- Future App 2: LuxTherapy -->
+        <div class="glass-panel roadmap-card">
+          <div class="roadmap-header">
+            <span class="badge roadmap-badge">Research Lab</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Beta Launch Q4</span>
+          </div>
+          <h3 class="roadmap-title" style="margin-bottom: 0.5rem;">LuxTherapy Circadian Light Simulator</h3>
+          <p style="font-size: 0.85rem;">Calculates optimal light intensity, lux thresholds, and spectrum timings (e.g. blue-light exposure vs orange sunsets) based on your chronotype to accelerate phase shifts and travel adaptation.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SCIENCE & CLINICAL RATIONALE HUB -->
+    <section class="science-section">
+      <div class="science-grid">
+        <div class="science-content">
+          <h2>The Interaction of Circadian Phase & Vigilance</h2>
+          <p>Sleep pressure and cognitive vigilance are regulated by a highly complex two-process model of sleep regulation: <strong>Process C (Circadian rhythm)</strong> and <strong>Process S (Homeostatic sleep drive)</strong>.</p>
+          <p><strong>Process C</strong> is an oscillatory alert drive driven by the brain's suprachiasmatic nucleus (SCN) that dictates when we are biologically primed to wake and sleep. <strong>Process S</strong> is the accumulation of somnogen (adenosine) in the synapses that grows lineally with every hour of wakefulness.</p>
+          <p>Living out of sync with Process C leads to <em>social jetlag</em>. Combining rMEQ chronotyping and PVT-B millisecond speed audits gives clinicians a high-resolution view of your current neurological readiness, indicating when you are at peak flow state and when you are highly susceptible to critical lapses of attention.</p>
+        </div>
+        
+        <div class="science-infographic">
+          <div class="info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+            <div>
+              <h4>Process C (Circadian clock)</h4>
+              <p>An internal 24.2-hour clock dictating hormonal alerting peaks. Peak performance aligns perfectly when challenging work occurs during your chronotype alert peaks.</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+            <div>
+              <h4>Process S (Sleep debt)</h4>
+              <p>Homeostatic fatigue. The longer you go without high-quality delta sleep, the more severe PVT lapses (micro-sleeps) will spike, regardless of your circadian alert drive.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CLINICAL FOOTER -->
+  <footer class="app-footer">
+    <div class="container footer-layout">
+      <nav class="footer-nav">
+        <a href="../meq-app/index.html">rMEQ Chronometer</a>
+        <a href="../pvt-app/index.html">PVT-B Attentional Audit</a>
+        <a href="https://o2healthcaregroup.com/respiratory/sleep-medicine-in-singapore/" target="_blank" rel="noopener">O₂ Sleep Medicine Singapore</a>
+      </nav>
+      
+      <p class="footer-citation">
+        Scientific suites backed by clinical methodologies: <br>
+        1. Adan, A., & Almirall, H. (1991). <em>Horne & Östberg Morningness-Eveningness Questionnaire: A reduced version</em>. <strong>Chronobiology International</strong>, 8(3), 233-243. <br>
+        2. Basner, M., & Dinges, D. F. (2011). <em>Maximizing sensitivity of the Psychomotor Vigilance Test (PVT-B) to sleep loss</em>. <strong>Sleep</strong>, 34(5), 581-591.
+      </p>
+      
+      <p class="footer-copyright">
+        © 2026 O₂ SleepWell Laboratory Group. All clinical rights reserved. For research and clinical evaluation only.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

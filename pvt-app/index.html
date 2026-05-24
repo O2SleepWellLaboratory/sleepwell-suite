@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Evaluate your cognitive alertness, reaction speeds, and fatigue levels. Take the scientifically validated Brief Psychomotor Vigilance Task (PVT-B) clinical assessment.">
+  <meta name="keywords" content="PVT-B, Psychomotor Vigilance Task, Reaction Time Test, Sleep Deprivation, Sleep Debt, Cognitive Fatigue, Vigilance Test, Chronobiology">
+  <meta name="author" content="O2 SleepWell Laboratory">
+  
+  <title>O2 SleepWell Laboratory | Psychomotor Vigilance Task (PVT-B)</title>
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Navigation Header -->
+    <header class="app-header">
+      <a href="https://o2healthcaregroup.com/respiratory/sleep-medicine-in-singapore/" target="_blank" rel="noopener" class="logo-wrapper" id="logoLink">
+        <img src="logo.jpg" alt="O2 SleepWell Laboratory Logo" class="company-logo">
+      </a>
+      
+      <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle light/dark theme">
+        <!-- Sun Icon -->
+        <svg class="sun-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+        </svg>
+        <!-- Moon Icon -->
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      
+      <!-- SCREEN 1: LAB CONFIGURATION & SETUP -->
+      <section class="config-section" id="configScreen">
+        <div class="intro-grid">
+          <!-- Science Intro Card -->
+          <div class="glass-card science-intro-card">
+            <span class="badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              Gold Standard Assessment
+            </span>
+            <h1 class="hero-title">
+              Measure Your <span>Attentional Alertness</span>
+            </h1>
+            <p class="hero-description">
+              The Psychomotor Vigilance Task (PVT-B) is the scientific gold standard utilized by sleep research laboratories and aerospace industries to measure sustained attention, fatigue levels, and cognitive deficits resulting from sleep deprivation.
+            </p>
+            
+            <div class="instructions-block">
+              <h3>Task Instructions:</h3>
+              <ul class="instruction-list">
+                <li>
+                  <div class="bullet-num">1</div>
+                  <p>A red target box will appear on screen. Wait silently. <strong>Do not anticipate or click early.</strong></p>
+                </li>
+                <li>
+                  <div class="bullet-num">2</div>
+                  <p>As soon as a millisecond counter flashes inside the box, <strong>press the SPACEBAR or CLICK/TAP the screen as fast as possible.</strong></p>
+                </li>
+                <li>
+                  <div class="bullet-num">3</div>
+                  <p>Your reaction time (RT) will display. Reaction speeds slower than 500ms represent **lapses of attention** (micro-sleeps).</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Configuration Control Card -->
+          <div class="glass-card control-config-card">
+            <h2 class="section-card-title">Laboratory Settings</h2>
+            <p class="card-subtitle">Configure the vigilance testing parameters before launching.</p>
+            
+            <div class="config-options-group">
+              
+              <!-- Session Duration Selector -->
+              <div class="config-option">
+                <label class="option-label">Session Duration</label>
+                <div class="segmented-selector" id="durationSelector">
+                  <button class="selector-btn" data-value="180000">
+                    <span class="btn-primary-txt">Clinical</span>
+                    <span class="btn-sub-txt">3 min</span>
+                  </button>
+                  <button class="selector-btn active" data-value="60000">
+                    <span class="btn-primary-txt">Sprint</span>
+                    <span class="btn-sub-txt">1 min</span>
+                  </button>
+                  <button class="selector-btn" data-value="30000">
+                    <span class="btn-primary-txt">Demo</span>
+                    <span class="btn-sub-txt">30 sec</span>
+                  </button>
+                </div>
+                <span class="option-tip">3-min standard is optimal for identifying moderate sleep pressure.</span>
+              </div>
+
+              <!-- Input Interface Selector -->
+              <div class="config-option">
+                <label class="option-label">Trigger Interface</label>
+                <div class="segmented-selector" id="inputSelector">
+                  <button class="selector-btn active" data-value="space">
+                    <span class="btn-primary-txt">Spacebar</span>
+                    <span class="btn-sub-txt">Keyboard</span>
+                  </button>
+                  <button class="selector-btn" data-value="tap">
+                    <span class="btn-primary-txt">Click/Tap</span>
+                    <span class="btn-sub-txt">Anywhere</span>
+                  </button>
+                </div>
+                <span class="option-tip">Spacebar triggers ensure the absolute lowest hardware latency.</span>
+              </div>
+
+              <!-- Audio Cues Selector -->
+              <div class="config-option">
+                <label class="option-label">Auditory Feedback</label>
+                <div class="segmented-selector" id="audioSelector">
+                  <button class="selector-btn active" data-value="on">
+                    <span class="btn-primary-txt">Enabled</span>
+                    <span class="btn-sub-txt">Chimes/Tones</span>
+                  </button>
+                  <button class="selector-btn" data-value="off">
+                    <span class="btn-primary-txt">Disabled</span>
+                    <span class="btn-sub-txt">Silent Lab</span>
+                  </button>
+                </div>
+                <span class="option-tip">Generates Web Audio chimes for successes, lapses, and false starts.</span>
+              </div>
+              
+            </div>
+
+            <button class="primary-btn launch-btn" id="startTestBtn">
+              Initialize Vigilance Test
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: ACTIVE VIGILANCE ARENA -->
+      <section class="arena-section hidden" id="arenaScreen">
+        
+        <!-- Live HUD Status -->
+        <div class="arena-hud">
+          <div class="hud-item timer">
+            <span class="hud-label">Time Remaining</span>
+            <span class="hud-val" id="hudTimeLeft">01:00.0</span>
+          </div>
+          <div class="hud-item trials">
+            <span class="hud-label">Trials Run</span>
+            <span class="hud-val" id="hudTrialsCount">0</span>
+          </div>
+          <div class="hud-item lapses">
+            <span class="hud-label">Lapses (>500ms)</span>
+            <span class="hud-val text-lapses" id="hudLapsesCount">0</span>
+          </div>
+          <div class="hud-item false-starts">
+            <span class="hud-label">False Starts</span>
+            <span class="hud-val text-false-starts" id="hudFalseStartsCount">0</span>
+          </div>
+          
+          <button class="arena-quit-btn" id="quitTestBtn">
+            Quit Test
+          </button>
+        </div>
+
+        <!-- Session Progress Indicator -->
+        <div class="arena-progress-container">
+          <div class="arena-progress-bar" id="arenaProgressBar" style="width: 100%;"></div>
+        </div>
+
+        <!-- STIMULUS STAGE AREA -->
+        <div class="stimulus-backdrop" id="clickBackdrop">
+          
+          <!-- Core Stimulus Target Box -->
+          <div class="stimulus-box" id="stimulusBox">
+            <div class="stimulus-inner">
+              <div class="stimulus-state-text" id="stimulusStateText">WAITING FOR TARGET</div>
+              
+              <!-- Massive Digital Number Counter -->
+              <span class="stimulus-timer tabular-nums hidden" id="stimulusTimer">000</span>
+              
+              <!-- Instant Trial Reaction Display -->
+              <div class="stimulus-feedback-group hidden" id="stimulusFeedback">
+                <span class="feedback-rt" id="feedbackRt">254 ms</span>
+                <span class="feedback-msg" id="feedbackMsg">OPTIMAL</span>
+              </div>
+            </div>
+          </div>
+          
+          <p class="tap-instruction-prompt" id="tapInstructionPrompt">
+            Press SPACEBAR when the red box turns neon and numbers count
+          </p>
+        </div>
+      </section>
+
+      <!-- SCREEN 3: SCIENTIFIC RESULTS DASHBOARD -->
+      <section class="results-section hidden" id="resultsScreen">
+        
+        <!-- Dashboard Top Grading Card -->
+        <div class="glass-card results-summary-card">
+          <div class="summary-grade-info">
+            <span class="badge score-badge" id="resultsBadge">Vigilance Grade</span>
+            <h2 class="grade-title" id="resultsGradeTitle">
+              Optimal Alertness Profile
+            </h2>
+            <p class="grade-subtitle-desc" id="resultsGradeDesc">
+              Your reaction speeds are consistent with high executive function, optimal rest, and absence of significant sleep debt.
+            </p>
+          </div>
+          
+          <div class="summary-quick-scores">
+            <div class="quick-score-circle" id="quickScoreCircle">
+              <svg viewBox="0 0 100 100" class="circle-svg">
+                <circle cx="50" cy="50" r="42" stroke="var(--card-border)" stroke-width="6" fill="none" />
+                <circle cx="50" cy="50" r="42" stroke="var(--brand-primary)" stroke-width="7" stroke-dasharray="264" stroke-dashoffset="0" stroke-linecap="round" fill="none" class="gauge-fill-ring" id="gaugeCircle" />
+              </svg>
+              <div class="quick-score-inner">
+                <span class="qs-value" id="meanRtQuick">235</span>
+                <span class="qs-unit">Mean ms</span>
+              </div>
+            </div>
+            <div class="lapse-summary-box">
+              <span class="ls-count" id="lapsesQuick">0</span>
+              <span class="ls-label">Total Lapses</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Statistical Grid Details -->
+        <div class="results-stats-grid">
+          
+          <div class="stats-card">
+            <div class="sc-icon text-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div class="sc-content">
+              <span class="sc-label">Mean Reaction Time</span>
+              <span class="sc-value text-primary"><span id="statMeanRT">0</span> <span class="sc-unit">ms</span></span>
+              <span class="sc-comparison" id="statMeanRTComp">Optimal (< 250ms)</span>
+            </div>
+          </div>
+
+          <div class="stats-card">
+            <div class="sc-icon text-lapses">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+            </div>
+            <div class="sc-content">
+              <span class="sc-label">Attentional Lapses</span>
+              <span class="sc-value text-lapses" id="statLapses">0</span>
+              <span class="sc-comparison" id="statLapsesComp">No lapses observed</span>
+            </div>
+          </div>
+
+          <div class="stats-card">
+            <div class="sc-icon text-false-starts">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+            <div class="sc-content">
+              <span class="sc-label">False Starts</span>
+              <span class="sc-value text-false-starts" id="statFalseStarts">0</span>
+              <span class="sc-comparison" id="statFalseStartsComp">Optimal anticipation</span>
+            </div>
+          </div>
+
+          <div class="stats-card">
+            <div class="sc-icon text-purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+            </div>
+            <div class="sc-content">
+              <span class="sc-label">Reciprocal RT (1/RT)</span>
+              <span class="sc-value text-purple" id="statReciprocalRT">0.00</span>
+              <span class="sc-comparison">Vigilance speed index (s⁻¹)</span>
+            </div>
+          </div>
+
+          <div class="stats-card md-span-2">
+            <div class="sc-icon text-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <div class="sc-content">
+              <span class="sc-label">Vigilance Performance Score</span>
+              <span class="sc-value text-green"><span id="statPerformanceScore">100.0</span> <span class="sc-unit">%</span></span>
+              <span class="sc-comparison" id="statPerfComp">Sustained attentional accuracy</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ATTENTIONAL TIMELINE CHART (SVG BASED) -->
+        <div class="glass-card chart-container-card">
+          <div class="card-header-with-title">
+            <div class="card-title-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18" />
+                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+              </svg>
+              <h3>Attention Vigilance Timeline</h3>
+            </div>
+            <span class="chart-legend-label">Reaction time per trial chronological sequence</span>
+          </div>
+          
+          <div class="chart-canvas-wrapper">
+            <svg id="trialChart" viewBox="0 0 700 280" preserveAspectRatio="xMidYMid meet">
+              <!-- Dynamically populated chart goes here -->
+            </svg>
+          </div>
+        </div>
+
+        <!-- Clinical Interpretation Card -->
+        <div class="glass-card diagnostic-card">
+          <div class="card-title-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <h3>Clinical Diagnostics & Fatigue Assessment</h3>
+          </div>
+          
+          <div class="diagnostic-content-text" id="diagnosticText">
+            Diagnostic loading...
+          </div>
+        </div>
+
+        <!-- Historical Log Records -->
+        <div class="glass-card history-container-card">
+          <div class="history-table-header">
+            <div class="card-title-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <h3>O2 SleepWell Laboratory History</h3>
+            </div>
+            <button class="clear-history-btn" id="clearHistoryBtn">Clear Records</button>
+          </div>
+          
+          <div class="history-table-wrapper">
+            <table class="history-table" id="historyTable">
+              <thead>
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Duration</th>
+                  <th>Mean RT</th>
+                  <th>Lapses</th>
+                  <th>False Starts</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody id="historyTableBody">
+                <!-- Dynamically populated rows or empty state -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Post-test Action Control Group -->
+        <div class="btn-group-results">
+          <button class="primary-btn" id="retryTestBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+            </svg>
+            Retake Assessment
+          </button>
+          <button class="secondary-btn" id="printReportBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Export Lab Report
+          </button>
+          <button class="secondary-btn" id="backToSetupBtn">
+            Exit to Configuration
+          </button>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <p class="footer-citation">
+        PVT-B scientific methodology: Basner, M., & Dinges, D. F. (2011). <em>Maximizing sensitivity of the Psychomotor Vigilance Test (PVT-B) to sleep loss</em>. <strong>Sleep</strong>, 34(5), 581-591. Used for clinical fatigue auditing.
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

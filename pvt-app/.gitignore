@@ -1,0 +1,11 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# System generated and workspace logs
+.system_generated/
+.gemini/
+brain/
+*~
+*.log
+.vercel

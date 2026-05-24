@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover your sleep chronotype and align your daily schedule with your biological clock. Take the scientifically validated reduced Morningness-Eveningness Questionnaire (rMEQ).">
+  <meta name="keywords" content="rMEQ, Morningness Eveningness Questionnaire, Chronotype, Circadian Rhythm, Lark Bear Owl, Sleep Schedule, Chronobiology">
+  <meta name="author" content="Circadian Alignment Tool">
+  
+  <title>Circadian Alignment Tool | Morningness-Eveningness Questionnaire (rMEQ)</title>
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Navigation Header -->
+    <header class="app-header">
+      <a href="https://o2healthcaregroup.com/respiratory/sleep-medicine-in-singapore/" target="_blank" rel="noopener" class="logo-wrapper" id="logoLink">
+        <img src="logo.jpg" alt="O₂ Sleepwell Laboratory Logo" class="company-logo">
+      </a>
+      
+      <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle light/dark theme">
+        <!-- Sun Icon -->
+        <svg class="sun-icon hidden" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5" />
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round" />
+        </svg>
+        <!-- Moon Icon -->
+        <svg class="moon-icon" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-linecap="round" />
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      
+      <!-- HERO SECTION -->
+      <section class="hero-section" id="heroSection">
+        <div class="hero-content">
+          <span class="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+            Science-Backed Chronology
+          </span>
+          <h1 class="hero-title">
+            Discover Your <span>Circadian Rhythm</span>
+          </h1>
+          <p class="hero-description">
+            Find your peak productivity windows, optimize your sleep patterns, and align your schedule with your biology. Take the validated reduced Morningness-Eveningness Questionnaire (rMEQ) in under 2 minutes.
+          </p>
+          <div class="btn-group">
+            <button class="primary-btn" id="startQuizBtn">
+              Start Assessment
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+            <button class="secondary-btn" id="viewHistoryQuickBtn">
+              View History
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="visual-clock-ring">
+            <div class="visual-clock-glowing-dots"></div>
+            <div class="clock-center-art">
+              <!-- Dynamically changing sun/moon logo inside hero visual -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-morning)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+              </svg>
+              <div class="clock-time-indicator" id="heroTimeIndicator">07:30 AM</div>
+              <div class="clock-badge" id="heroClockState">Melatonin Ceases</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUIZ SECTION -->
+      <section class="quiz-section hidden" id="quizSection">
+        <div class="quiz-header">
+          <div class="quiz-steps-counter">
+            Question <span id="currentQuestionNum">1</span><span>/5</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBarFill" style="width: 20%;"></div>
+          </div>
+          <button class="quit-quiz-btn" id="quitQuizBtn">Quit Quiz</button>
+        </div>
+        
+        <div class="glass-card">
+          <div class="question-container">
+            <h2 class="question-text" id="questionText">Loading question...</h2>
+            <div class="options-list" id="optionsList">
+              <!-- Dynamically rendered options go here -->
+            </div>
+          </div>
+          
+          <div class="quiz-footer">
+            <button class="secondary-btn hidden" id="prevQuestionBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scaleX(-1);">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+              Previous
+            </button>
+            <button class="primary-btn" id="nextQuestionBtn" disabled>
+              Next
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- DASHBOARD & RESULTS SECTION -->
+      <section class="dashboard-section hidden" id="resultsSection">
+        
+        <!-- Results Header Card -->
+        <div class="glass-card results-header-card">
+          <div class="chronotype-result-info">
+            <span class="badge results-badge">Your Chronotype</span>
+            <h2 class="chronotype-title">
+              You are an <span>Evening Owl</span>
+            </h2>
+            <div class="chronotype-score-card">
+              <span class="chronotype-score-value" id="chronotypeScore">9</span>
+              <span class="chronotype-score-max">/ 25</span>
+            </div>
+            <p class="chronotype-description" id="chronotypeDesc">
+              Evening types typically reach peak cognitive and physical alertness much later in the day. Waking up early feels naturally challenging, while nighttime is often highly creative and productive.
+            </p>
+          </div>
+          
+          <div class="chronotype-visual-illustration">
+            <div class="illustration-card" id="illustrationCard" style="--accent-rgb: var(--accent-evening-rgb); --accent-color: var(--accent-evening);">
+              <div class="illustration-icon-wrapper" id="illustrationIconWrapper">
+                <!-- Dynamically assigned SVG -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+                <span class="illustration-label" id="illustrationLabel">Evening Owl</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Dashboard Content Grid -->
+        <div class="dashboard-grid">
+          
+          <!-- Sleep Timeline Card -->
+          <div class="glass-card sleep-schedule-card">
+            <div class="schedule-header">
+              <div class="card-title-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                </svg>
+                <h3>Ideal Sleep Schedule</h3>
+              </div>
+            </div>
+            
+            <div class="schedule-time-blocks">
+              <div class="time-block sleep">
+                <div class="time-block-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 4v16M2 8h20M2 12h20M22 4v16" />
+                  </svg>
+                </div>
+                <div class="time-block-info">
+                  <span class="time-block-label">Optimal Bedtime</span>
+                  <span class="time-block-value" id="optimalBedtime">01:30 AM</span>
+                </div>
+              </div>
+              
+              <div class="time-block wake">
+                <div class="time-block-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5" />
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                  </svg>
+                </div>
+                <div class="time-block-info">
+                  <span class="time-block-label">Optimal Wake Time</span>
+                  <span class="time-block-value" id="optimalWakeTime">09:30 AM</span>
+                </div>
+              </div>
+            </div>
+            
+            <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-secondary); margin-top: 0.5rem;">
+              Maintain these target sleep/wake boundaries even on weekends to preserve circadian synchronization and prevent "social jetlag."
+            </p>
+          </div>
+          
+          <!-- Circadian Waveform Chart Card -->
+          <div class="glass-card circadian-visualizer-container">
+            <div class="card-title-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z" />
+              </svg>
+              <h3>Circadian Alertness Cycle</h3>
+            </div>
+            
+            <div class="visualizer-chart-wrapper">
+              <svg id="circadianChart" viewBox="0 0 600 240" preserveAspectRatio="xMidYMid meet">
+                <!-- Dynamically drawn SVG parts will go here -->
+              </svg>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Performance Windows Card -->
+        <div class="glass-card performance-timings-card">
+          <div class="card-title-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            <h3>Daily Routine Alignment Windows</h3>
+          </div>
+          
+          <div class="recommendations-list" id="recommendationsList">
+            <!-- Dynamically populated recommendations -->
+          </div>
+        </div>
+        
+        <!-- Post-quiz control buttons -->
+        <div class="btn-group" style="justify-content: center; margin-top: 1rem;">
+          <button class="primary-btn" id="retakeQuizBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+            </svg>
+            Retake Questionnaire
+          </button>
+          <button class="secondary-btn" id="printReportBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            Export/Print Report
+          </button>
+        </div>
+      </section>
+
+      <!-- HISTORY LOG SECTION -->
+      <section class="glass-card history-section" id="historySection">
+        <div class="history-header">
+          <div class="card-title-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <h2>Chronotype History</h2>
+          </div>
+          <button class="clear-history-btn" id="clearHistoryBtn">Clear Records</button>
+        </div>
+        
+        <div class="history-list" id="historyList">
+          <!-- Dynamically populated or empty state -->
+        </div>
+      </section>
+
+      <!-- EDUCATIONAL SECTION -->
+      <section class="educational-section">
+        <h2>Understanding Chronobiology</h2>
+        <div class="educational-grid">
+          
+          <div class="educational-card">
+            <div class="educational-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2" />
+              </svg>
+            </div>
+            <h3 class="educational-title">What is a Chronotype?</h3>
+            <p>Your chronotype is the natural behavioral manifestation of your underlying circadian rhythm. It dictates your body's natural disposition towards sleep, wakefulness, alertness, and peak physiological performance at specific times of the solar day.</p>
+          </div>
+          
+          <div class="educational-card">
+            <div class="educational-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3 class="educational-title">The Science of rMEQ</h3>
+            <p>The reduced Morningness-Eveningness Questionnaire (rMEQ) is a psychometric questionnaire developed by Adan and Almirall in 1991. Consisting of 5 core diagnostic items extracted from the full 19-item MEQ, it offers a quick yet scientifically rigorous measure of circadian phase alignment.</p>
+          </div>
+          
+          <div class="educational-card">
+            <div class="educational-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <h3 class="educational-title">Circadian Alignment</h3>
+            <p>Living out of sync with your internal chronometer is linked to "social jetlag," which impacts mental health, focus, and metabolism. Aligning deep cognitive work, workouts, and sleep with your biological peaks dramatically enhances energy levels and focus.</p>
+          </div>
+          
+        </div>
+      </section>
+
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <div class="footer-links">
+        <a href="#heroSection" id="scrollToTopLink">Back to Top</a>
+      </div>
+      <p class="footer-citation">
+        rMEQ scientific methodology based on: Adan, A., & Almirall, H. (1991). <em>Horne & Östberg Morningness-Eveningness Questionnaire: A reduced version</em>. <strong>Chronobiology International</strong>, 8(3), 233-243. Used with clinical validation.
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
